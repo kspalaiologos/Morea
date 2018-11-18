@@ -344,6 +344,95 @@ _fputc_slot2:
 	?+8; sp ?+4; bp; 0 bp; inc sp
 	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
 
+_fgetc:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t2 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t3 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t4 0
+
+	t2; t3; bp t2; c5 t2; t2 t3
+	t2; t4; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t4
+	t3; Z t4 ?+3; Z Z ?+9
+	t4 Z ?+3; Z Z ?+3; inc t3
+	Z t3 l11
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; ?+2 0 _fgetc_slot1; . ?;
+	t1; ax t1
+	inc sp
+	ax; t1 ax
+	Z Z end_fgetc
+
+	Z Z l12
+l11:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; ?+2 0 _fgetc_slot2; . ?;
+	t1; ax t1
+	inc sp
+	ax; t1 ax
+	Z Z end_fgetc
+l12:
+
+end_fgetc:
+	?+8; sp ?+4; t4; 0 t4; inc sp
+	?+8; sp ?+4; t3; 0 t3; inc sp
+	?+8; sp ?+4; t2; 0 t2; inc sp
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
+_fputc:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t2 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t3 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t4 0
+
+	t2; t1; bp t2; c5 t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; Z t4 ?+3; Z Z ?+9
+	t4 Z ?+3; Z Z ?+3; inc t1
+	Z t1 l13
+	t1; t2; bp t1; c8 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+9; sp ?+5; t3 Z; Z 0; Z
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; ?+2 0 _fputc_slot1; . ?;
+	c5 sp
+
+	Z Z l14
+l13:
+	t1; t2; bp t1; c8 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+9; sp ?+5; t3 Z; Z 0; Z
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; ?+2 0 _fputc_slot2; . ?;
+	c5 sp
+l14:
+
+	?+8; sp ?+4; t4; 0 t4; inc sp
+	?+8; sp ?+4; t3; 0 t3; inc sp
+	?+8; sp ?+4; t2; 0 t2; inc sp
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
 _feof_slot1:
 	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
 	?+6; sp ?+2; bp 0
@@ -537,21 +626,21 @@ _unlink:
 
 	c23 (-1)
 
-l11:
+l15:
 	t1; t2; bp t1; c5 t1; t1 t2
 	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
 	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
 	t3; t1 Z; Z t3 ?+3; Z Z ?+9; Z; t1 t3; t1 t3
-	Z t3 l13
+	Z t3 l17
 	t2; t1; bp t2; c5 t2; t2 t1
 	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
 	t1; t2; ?+11; t4 Z; Z ?+4; Z; 0 t1; t1 t2
 	t2 (-1)
-l12:
+l16:
 	t1; t2; bp t1; c5 t1; t1 t2
 	t2 Z; ?+9; Z ?+5; Z; inc 0
-	Z Z l11
-l13:
+	Z Z l15
+l17:
 
 	c2 (-1)
 
