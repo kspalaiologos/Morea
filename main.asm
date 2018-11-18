@@ -398,6 +398,48 @@ _fseek_slot2:
 	?+8; sp ?+4; bp; 0 bp; inc sp
 	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
 
+_fsize_slot1:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+
+	c20 (-1)
+
+	c2 (-1)
+
+	t1; (-1) t1
+	ax; t1 ax
+	Z Z end_fsize_slot1
+
+end_fsize_slot1:
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
+_fsize_slot2:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+
+	c21 (-1)
+
+	c2 (-1)
+
+	t1; (-1) t1
+	ax; t1 ax
+	Z Z end_fsize_slot2
+
+end_fsize_slot2:
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
 _main:
 	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
 	?+6; sp ?+2; bp 0
@@ -413,7 +455,7 @@ sqmain:
 
 	Z Z (-1)
 
-. c5:-2 c2:0 c6:11 c7:12 c8:13 c9:14 c10:15 c11:16 c12:17 c13:18 c14:19 c15:20 c4:21 c1:22 c3:23 c16:31 c17:32 c18:33 c19:34
+. c5:-2 c2:0 c6:11 c7:12 c8:13 c9:14 c10:15 c11:16 c12:17 c13:18 c14:19 c15:20 c4:21 c1:22 c3:23 c16:31 c17:32 c18:33 c19:34 c20:35 c21:36
 
 . t1:0 t2:0 t3:0 t4:0
 
