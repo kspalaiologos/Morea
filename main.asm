@@ -1246,6 +1246,246 @@ end_strtok:
 	?+8; sp ?+4; bp; 0 bp; inc sp
 	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
 
+_strcmp:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	c27 sp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t2 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t3 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t4 0
+
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; dec t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+
+	t1; t2; bp t1; c22 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; c27 t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+
+	t4; t3; bp t4; dec t4; t4 t3
+	t4; t2; ?+11; t3 Z; Z ?+4; Z; 0 t4; t4 t2
+	t3; t2 Z; Z t3; Z; c3 t3 ?+3
+	t3 t3 ?+9; t3 Z ?+3; Z Z ?+3; inc t3
+	Z t3 l54
+	t1; t2; bp t1; dec t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; c27 t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; t3 Z; Z t1; Z; t4 t1
+	ax; t1 ax
+	Z Z end_strcmp
+l54:
+
+l55:
+	t1; t2; bp t1; dec t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; c27 t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; t3 Z; Z t1; Z; t4 t1 ?+3
+	t1 t1 ?+9; t1 Z ?+3; Z Z ?+3; inc t1
+	Z t1 l56
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; dec t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+
+	t1; t2; bp t1; c22 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; c27 t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+
+	t4; t3; bp t4; dec t4; t4 t3
+	t4; t2; ?+11; t3 Z; Z ?+4; Z; 0 t4; t4 t2
+	t3; t2 Z; Z t3; Z; c3 t3 ?+3
+	t3 t3 ?+9; t3 Z ?+3; Z Z ?+3; inc t3
+	Z t3 l57
+	t1; t2; bp t1; dec t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; c27 t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; t3 Z; Z t1; Z; t4 t1
+	ax; t1 ax
+	Z Z end_strcmp
+l57:
+
+	Z Z l55
+l56:
+
+	t1; t2; bp t1; dec t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; c27 t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; t3 Z; Z t1; Z; t4 t1
+	ax; t1 ax
+	Z Z end_strcmp
+
+end_strcmp:
+	?+8; sp ?+4; t4; 0 t4; inc sp
+	?+8; sp ?+4; t3; 0 t3; inc sp
+	?+8; sp ?+4; t2; 0 t2; inc sp
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
+_strstr:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	c27 sp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t2 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t3 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t4 0
+
+	t1; t2; bp t1; c22 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; dec t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+	t2; t1 Z; Z t2 ?+3; Z Z ?+9; Z; t1 t2; t1 t2
+	Z t2 l68
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; c27 t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+	t2; Z t1 ?+3; Z Z ?+9
+	t1 Z ?+3; Z Z ?+3; inc t2
+	Z t2 l58
+	ax; _NULL ax
+	Z Z end_strstr
+l58:
+
+l59:
+	t1; t2; bp t1; c27 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; dec t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; t3 Z; Z t1; t4 t1 ?+3; Z Z ?+15
+	Z; t1 Z ?+9; Z; t1; inc t1
+	Z t1 l60
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; c27 t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+	t2; Z t1 ?+3; Z Z ?+9
+	t1 Z ?+3; Z Z ?+3; inc t2
+	Z t2 l61
+	ax; _NULL ax
+	Z Z end_strstr
+l61:
+
+	Z Z l59
+l60:
+
+l62:
+	t1; t2; bp t1; c22 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+9; sp ?+5; t3 Z; Z 0; Z
+	t3; t2; bp t3; c2 t3; t3 t2
+	t3; t1; ?+11; t2 Z; Z ?+4; Z; 0 t3; t3 t1
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+9; sp ?+5; t1 Z; Z 0; Z
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; ?+2 0 _strcmp; . ?;
+	t1; ax t1
+	c22 sp
+	t2; t1 Z; Z t2 ?+3; Z Z ?+9; Z; t1 t2; t1 t2
+	Z t2 l63
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; c27 t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+	t2; Z t1 ?+3; Z Z ?+9
+	t1 Z ?+3; Z Z ?+3; inc t2
+	Z t2 l64
+	ax; _NULL ax
+	Z Z end_strstr
+l64:
+
+l65:
+	t1; t2; bp t1; c27 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; dec t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1; t3 Z; Z t1; t4 t1 ?+3; Z Z ?+15
+	Z; t1 Z ?+9; Z; t1; inc t1
+	Z t1 l66
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2 Z; ?+9; Z ?+5; Z; inc 0
+	t2; t1; ?+11; t3 Z; Z ?+4; Z; 0 t2; t2 t1
+	t3; t2; bp t3; c27 t3; t3 t2
+	?+23; ?+21; ?+24; t2 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t1 Z; Z 0; Z
+	t2; Z t1 ?+3; Z Z ?+9
+	t1 Z ?+3; Z Z ?+3; inc t2
+	Z t2 l67
+	ax; _NULL ax
+	Z Z end_strstr
+l67:
+
+	Z Z l65
+l66:
+
+	Z Z l62
+l63:
+
+	t1; t2; bp t1; c2 t1; t1 t2
+	t2 Z; ?+9; Z ?+5; Z; dec 0
+
+l68:
+
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	ax; t3 ax
+	Z Z end_strstr
+
+end_strstr:
+	?+8; sp ?+4; t4; 0 t4; inc sp
+	?+8; sp ?+4; t3; 0 t3; inc sp
+	?+8; sp ?+4; t2; 0 t2; inc sp
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
 _main:
 	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
 	?+6; sp ?+2; bp 0
