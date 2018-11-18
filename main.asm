@@ -1667,6 +1667,70 @@ end_strcat:
 	?+8; sp ?+4; bp; 0 bp; inc sp
 	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
 
+_memset:
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; bp 0
+	bp; sp bp
+	dec sp
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t1 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t2 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t3 0
+	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
+	?+6; sp ?+2; t4 0
+
+	t1; t2; bp t1; c30 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t3 Z; Z t2 ?+3; Z Z ?+9; Z; t3 t2; t3 t2
+	Z t2 l81
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; dec t2; t2 t1
+	?+23; ?+21; ?+24; t1 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t3 Z; Z 0; Z
+
+	t1; t2; bp t1; c22 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; dec t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1 Z; ?+9; Z ?+5; Z; inc 0
+	?+23; ?+21; ?+24; t4 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t3 Z; Z 0; Z
+
+l79:
+	t3; t4; bp t3; c30 t3; t3 t4
+	t4 Z; ?+9; Z ?+5; Z; dec 0
+	t3; t1; ?+11; t4 Z; Z ?+4; Z; 0 t3; t3 t1
+	t4; t1 Z; Z t4 ?+3; Z Z ?+9; Z; t1 t4; t1 t4
+	Z t4 l80
+	t1; t2; bp t1; c22 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	t2; t1; bp t2; dec t2; t2 t1
+	t2; t4; ?+11; t1 Z; Z ?+4; Z; 0 t2; t2 t4
+	t1 Z; ?+9; Z ?+5; Z; inc 0
+	?+23; ?+21; ?+24; t4 Z; Z ?+10; Z ?+8
+	Z ?+11; Z; 0; t3 Z; Z 0; Z
+	Z Z l79
+l80:
+
+l81:
+
+	t1; t2; bp t1; c2 t1; t1 t2
+	t1; t3; ?+11; t2 Z; Z ?+4; Z; 0 t1; t1 t3
+	ax; t3 ax
+	Z Z end_memset
+
+end_memset:
+	?+8; sp ?+4; t4; 0 t4; inc sp
+	?+8; sp ?+4; t3; 0 t3; inc sp
+	?+8; sp ?+4; t2; 0 t2; inc sp
+	?+8; sp ?+4; t1; 0 t1; inc sp
+	sp; bp sp
+	?+8; sp ?+4; bp; 0 bp; inc sp
+	?+8; sp ?+4; ?+7; 0 ?+3; Z Z 0
+
 _main:
 	dec sp; ?+11; sp ?+7; ?+6; sp ?+2; 0
 	?+6; sp ?+2; bp 0
@@ -1682,7 +1746,7 @@ sqmain:
 
 	Z Z (-1)
 
-. c2:-2 c22:-3 c3:0 c20:10 c1:11 c4:12 c5:13 c6:14 c7:15 c8:16 c9:17 c10:18 c11:19 c27:2 c12:20 c26:21 c24:22 c25:23 c28:3 c13:31 c14:32 c15:33 c16:34 c17:35 c18:36 c21:37 c29:4 c23:8 c19:9
+. c2:-2 c22:-3 c30:-4 c3:0 c20:10 c1:11 c4:12 c5:13 c6:14 c7:15 c8:16 c9:17 c10:18 c11:19 c27:2 c12:20 c26:21 c24:22 c25:23 c28:3 c13:31 c14:32 c15:33 c16:34 c17:35 c18:36 c21:37 c29:4 c23:8 c19:9
 
 . t1:0 t2:0 t3:0 t4:0 t5:0 t6:0
 
